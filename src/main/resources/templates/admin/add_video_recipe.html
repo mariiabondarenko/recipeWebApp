@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Добавление рецепта</title>
+</head>
+<body class="bg-light">
+
+<!-- Панель навигации -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+    <img src="/images/img.png" height="57" width="130">
+    <form action="/video" name="video" class="form-inline my-2 my-lg-0 ml-4 pt-2" style="margin-right: 30px">
+        <input class="btn btn-info my-2 my-sm-0" type="submit" value="Видео-рецепты">
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/admin/add_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить рецепт">
+                </form>
+            </li>
+
+            <li class="nav-item">
+                <form action="/exit" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <button type="submit" class="btn btn-primary mb-2">Выйти</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="py-3 text-center">
+        <h4>Добавление видео-рецепта</h4>
+    </div>
+
+    <form enctype="multipart/form-data" action="#" th:action="@{/add_video_recipe}" th:object="${videoRecipe}" method="post" class="needs-validation"
+          novalidate>
+                <div class="row">
+
+                    <div class="col-md-5 mb-3 mx-auto">
+                        <label for="name">Название видео</label>
+                        <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Название видео"
+                               value="" required>
+                        <span th:errors="*{name}" th:if="${#fields.hasErrors('name')}" style="color: red;"></span>
+                    </div>
+
+                </div>
+                <<div class="row">
+                    <div class="col-md-5 mb-3 mx-auto">
+                        <label for="path">Ссылка на видео-рецепт(как на примере)</label>
+                        <input th:field="*{path}" type="text" class="form-control" id="path" placeholder="Ссылка на рецепт"
+                               value="" required>
+                        <span th:errors="*{path}" th:if="${#fields.hasErrors('path')}" style="color: red;"></span>
+                        <img src="images/q.jpg" height="40" width="437">
+                    </div>
+                </div>
+
+                <hr class="mb-3">
+                <button class="btn btn-dark btn-lg btn-block" type="submit" value="Submit">Добавить видео-рецепт</button>
+
+    </form>
+
+<br/><br/><br/>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

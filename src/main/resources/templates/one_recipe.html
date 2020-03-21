@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>НаКухне</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<!-- Панель навигации -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+    <img src="/images/img.png" height="57" width="130">
+    <form action="/videorecipe" name="video" class="form-inline my-2 my-lg-0 ml-4 pt-2" style="margin-right: 30px">
+        <input class="btn btn-info my-2 my-sm-0" type="submit" value="Видео-рецепты">
+    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/info}" name="info" class="form-inline my-2 my-lg-0 ml-4 pt-2">
+                    <input class="btn btn-outline-info my-2 my-sm-0" type="submit" value="О нас">
+                </form>
+
+            </li>
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/add_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить рецепт">
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Конец панели навигации-->
+
+<ul class="nav nav-tabs nav-fill"> <!-- nav-pills -->
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/}">Главная</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/FIRST'}">Первое</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SECOND'}">Второе</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SALAD'}">Салаты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SNACK'}">Закуски</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/BAKING'}">Выпечка</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/DESSERT'}">Десерты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/DRINK'}">Напитки</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/OTHER'}">Разное</a>
+    </li>
+</ul>
+
+<div style="text-align: center">
+    <H4><B><span th:text="${recipe.name}"></span></B></H4>
+</div>
+
+<div>
+    <img th:src="@{'/imagedisplay?id=' + ${recipe.id}}" width="250px" height="200px" class="rounded float-left ml-4" alt="...">
+    <dl class="row">
+        <!--Картинка-->
+        <dt class="col-sm-2">Сложность: </dt>
+        <dd class="col-sm-2"><span th:text="${recipe.difficulty}"></span></dd>
+        <dt class="col-sm-2">К-ство порций:</dt>
+        <dd class="col-sm-2"><span th:text="${recipe.servings}"></span></dd>
+
+
+    </dl>
+    <dl class="row">
+<dt class="col-sm-2">Ингрeдиенты:</dt>
+        <dd class="col-sm-10"><span th:text="${recipe.ingredients}"></span></dd>
+    </dl>
+   <!-- <dl class="row">
+
+    </dl>-->
+</div>
+<div class="mx-auto" style="width: 200px;"><B>Описание рецепта:</B></div>
+  <p>  <span th:text="${recipe.directions}"></span></p>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

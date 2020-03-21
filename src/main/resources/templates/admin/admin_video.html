@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>НаКухне</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<!--<div class="container">-->
+<!-- Панель навигации -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+    <img src="/images/img.png" height="57" width="130">
+    <form action="/video" name="video" class="form-inline my-2 my-lg-0 ml-4 pt-2" style="margin-right: 30px">
+        <input class="btn btn-info my-2 my-sm-0" type="submit" value="Видео-рецепты">
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/admin/add_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить рецепт">
+                </form>
+            </li>
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/add_video_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить видео-рецепт">
+                </form>
+            </li>
+            <li class="nav-item">
+                <form action="/exit" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <button type="submit" class="btn btn-primary mb-2">Выйти</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Конец панели навигации-->
+
+<ul class="nav nav-tabs nav-fill"> <!-- nav-pills -->
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/}">Главная</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/FIRST'}">Первое</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/SECOND'}">Второе</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/SALAD'}">Салаты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/SNACK'}">Закуски</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/BAKING'}">Выпечка</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/DESSERT'}">Десерты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/DRINK'}">Напитки</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/admin/OTHER'}">Разное</a>
+    </li>
+</ul>
+
+
+<div class="row">
+
+    <div th:each="videoRecipe : ${videoRecipes}" class="card" style="width: 450px; height: 340px;  margin: 10px 25px">
+        <div class="card-body">
+                <div style="text-align: center">
+                    <H5><B><span th:text="${videoRecipe.name}"></span></B></H5>
+                </div>
+            <div style="text-align: center">
+                <iframe th:src="@{'https://www.youtube.com/embed/' + ${videoRecipe.path}}" width="400" height="220" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <form th:action="@{'/' + ${videoRecipe.id} + '/delvideo'}">
+                <button type="submit" class="btn btn-danger mb-2 btn-block">Удалить видео-рецепт</button>
+            </form>
+
+    </div>
+
+</div>
+<!-- Конец карточек -->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

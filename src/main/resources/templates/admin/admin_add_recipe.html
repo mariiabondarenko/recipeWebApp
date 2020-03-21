@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Добавление рецепта</title>
+</head>
+<body class="bg-light">
+
+<!-- Панель навигации -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+    <img src="/images/img.png" height="57" width="130">
+    <form action="/video" name="video" class="form-inline my-2 my-lg-0 ml-4 pt-2" style="margin-right: 30px">
+        <input class="btn btn-info my-2 my-sm-0" type="submit" value="Видео-рецепты">
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/admin/}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Главная">
+                </form>
+            </li>
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/add_video_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить видео-рецепт">
+                </form>
+            </li>
+            <li class="nav-item">
+                <form action="/exit" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <button type="submit" class="btn btn-primary mb-2">Выйти</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="py-3 text-center">
+        <h4>Добавление рецепта</h4>
+    </div>
+
+    <form enctype="multipart/form-data" action="#" th:action="@{/admin/add_recipe}" th:object="${recipe}" method="post" class="needs-validation"
+          novalidate>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-5 mb-3">
+                        <label for="name">Название</label>
+                        <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="Название блюда"
+                               value="" required>
+                        <span th:errors="*{name}" th:if="${#fields.hasErrors('name')}" style="color: red;"></span>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label for="difficulty">Сложность</label>
+                        <select th:field="*{difficulty}" id="difficulty" class="form-control" placeholder="" required>
+                            <option value="EASY" selected>EASY</option>
+                            <option value="MODERATE">MODERATE</option>
+                            <option value="HARD">HARD</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <label for="servings">Порции</label>
+                        <select th:field="*{servings}" id="servings" class="form-control" placeholder="" required>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3 mb-3">
+                        <label for="category">Категория</label>
+                        <select th:field="*{category}" id="category" class="form-control" placeholder="" required>
+                            <!--<option value="NULL" selected disabled>Выберите категорию:</option>-->
+                            <option value="FIRST">Первое</option>
+                            <option value="SECOND">Второе</option>
+                            <option value="SALAD">Салаты</option>
+                            <option value="SNACK">Закуски</option>
+                            <option value="BAKING">Выпечка</option>
+                            <option value="DESSERT">Десерты</option>
+                            <option value="DRINK">Напитки</option>
+                            <option value="OTHER">Разное</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+
+                    <div class="col-md-9 mb-3">
+                        <label for="ingredients">Ингредиенты</label>
+                        <textarea th:field="*{ingredients}" type="text" class="form-control" id="ingredients"
+                                  placeholder="Ингредиенты" value="" required rows="2"></textarea>
+                        <span th:errors="*{ingredients}" th:if="${#fields.hasErrors('ingredients')}" style="color: red;"></span>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label>Картинка</label>
+                        <input type="file" class="form-control-file" id="img">
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="directions">Описание рецепта</label>
+                    <textarea th:field="*{directions}" type="text" class="form-control" id="directions" placeholder="Описание" value=""
+                              required rows="7"></textarea>
+                    <span th:errors="*{directions}" th:if="${#fields.hasErrors('directions')}" style="color: red;"></span>
+                </div>
+
+
+                <hr class="mb-4">
+                <button class="btn btn-dark btn-lg btn-block" type="submit" value="Submit">Добавить рецепт</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+
+<br/><br/><br/>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

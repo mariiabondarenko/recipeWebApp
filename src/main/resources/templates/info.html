@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>НаКухне</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<!--<div class="container">-->
+<!-- Панель навигации -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top">
+    <img src="/images/img.png" height="57" width="130">
+    <form action="/videorecipe" name="video" class="form-inline my-2 my-lg-0 ml-4 pt-2" style="margin-right: 30px">
+        <input class="btn btn-info my-2 my-sm-0" type="submit" value="Видео-рецепты">
+    </form>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin-right: 20px">
+                <form th:action="@{~/add_recipe}" name="add" class="form-inline my-2 my-lg-0 ml-1 pt-2">
+                    <input class="btn btn-info my-2 my-sm-0" type="submit" value="Добавить рецепт">
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Конец панели навигации-->
+
+<ul class="nav nav-tabs nav-fill"> <!-- nav-pills -->
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/}">Главная</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/FIRST'}">Первое</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SECOND'}">Второе</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SALAD'}">Салаты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/SNACK'}">Закуски</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/BAKING'}">Выпечка</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/DESSERT'}">Десерты</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/DRINK'}">Напитки</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{'/OTHER'}">Разное</a>
+    </li>
+</ul>
+
+<div class="container">
+    <dl class="row">
+        <dt class="col-sm-2">О проекте:</dt>
+        <dd class="col-sm-10">Кулинарный сайт «НаКухне» - сайт, на котором каждое блюдо сопровождается фотографией.
+            На сайте представлено огромное количество рецептов приготовления блюд в различных мировых кухнях.
+            Пользователи могут просматривать рецепты которые уже есть на сайте, а так же добавлять свои собственные,
+            авторские рецепты. Так же есть возможность оценивать рецепты и наблюдать самый популярные рецепты среди пользователей.
+            Рецепты представлены в категориях "закуски","первые блюда", "вторые блюда", "десерты" и еще ряд других.
+            Для особенно неопытных пользователей и для тех, кто хочет научиться готовить, авторы сайта предложили раздел
+            "Видео рецепты" – здесь каждое блюдо сопровождается не только описанием, а еще и видеороликом.</dd>
+
+        <dt class="col-sm-2">Контакты:</dt>
+        <dd class="col-sm-9">
+            <p>E-mail: mashabond2000@gmail.com, kaa2000star@gmail.com</p>
+            <p>Контактный телефон: +38(066) 502 51 33, +38(095) 115 90 75</p>
+        </dd>
+    </dl>
+
+</div>
+<div class="footer-copyright text-center py-3">
+    Для администрации:
+
+<form th:action="@{/check}" method="get">
+    <div class="form-row align-items-center" style="margin-left: 33%">
+        <div class="col-auto">
+            <label class="sr-only" for="login">Логин</label>
+            <input type="text" aria-label="login" class="form-control mb-2" id="login" name="login" placeholder="Логин">
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="password">Пароль</label>
+            <input type="password" aria-label="password" class="form-control mb-2" id="password" name="password" placeholder="Пароль">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Войти</button>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
